@@ -4,7 +4,7 @@ import "./partner.css";
 import { motion } from "framer-motion";
 
 const Partner = () => {
-  const duplicatedImages = [...images, ...images];
+  const duplicatedImages = [...images, ...images, ...images, ...images];
 
   return (
     <div data-scroll-section>
@@ -15,13 +15,13 @@ const Partner = () => {
         <motion.div
           className="partner__slider flex"
           animate={{
-            x: [0, -50 * images.length],
+            x: ["0%", "-100%"],
           }}
           transition={{
             x: {
               repeat: Infinity,
               repeatType: "loop",
-              duration: 40,
+              duration: 140,
               ease: "linear",
             },
           }}
