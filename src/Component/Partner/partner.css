@@ -1,0 +1,26 @@
+.partner__container {
+  @apply border-t border-b border-secondary-white py-4;
+  background: #015a6a;
+  margin-top: -1px;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.partner__slider {
+  display: flex;
+  align-items: center;
+  animation: scroll 40s linear infinite;
+}
+
+.partner__slider > div {
+  flex-shrink: 0;
+  margin-right: 16px;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-30%);
+  }
+}
