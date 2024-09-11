@@ -1,43 +1,32 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-const PartnerItem = ({ images, from, to }) => {
-  return (
-    <div className="flex gap-6 border-t border-b border-secondary-white min-w">
-      <motion.div
-        initial={{ x: `${from}` }}
-        animate={{ x: `${to}` }}
-        transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
-        className="flex flex-shrink-0 gap-6"
-      >
-        {images.map((image, index) => {
-          return (
-            <img
-              className="h-[100px] w-[100px] object-contain"
-              src={image.src}
-              alt={image.alt}
-              key={index}
-            />
-          );
-        })}
-      </motion.div>
+const PartnerItem = ({ images }) => {
+  const containerWidth = images.length * (100 + 24); // 100px for image width, 24px for gap
 
+  return (
+    <div className="flex overflow-hidden border-t border-b border-secondary-white">
       <motion.div
-        initial={{ x: `${from}` }}
-        animate={{ x: `${to}` }}
-        transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
-        className="flex flex-shrink-0 gap-6"
+        className="flex gap-6"
+        initial={{ x: 0 }}
+        animate={{ x: -containerWidth }}
+        transition={{
+          x: {
+            repeat: Infinity,
+            repeatType: "loop",
+            duration: 60,
+            ease: "linear",
+          },
+        }}
       >
-        {images.map((image, index) => {
-          return (
-            <img
-              className="h-[100px] w-[100px] object-contain"
-              src={image.src}
-              alt={image.alt}
-              key={index}
-            />
-          );
-        })}
+        {images.concat(images).map((image, index) => (
+          <img
+            className="h-[100px] w-[100px] object-contain"
+            src={image.src}
+            alt={image.alt}
+            key={`${image.alt}-${index}`}
+          />
+        ))}
       </motion.div>
     </div>
   );

@@ -46,52 +46,76 @@ const Mailer = () => {
           <div className="mt-8">
             <label
               htmlFor="name"
-              className="block text-2xl font-medium text-primary-white"
+              className="my-4 block text-2xl font-medium text-primary-white"
             >
               Name
             </label>
-            <input
+            <motion.input
+              placeholder="Johnny Doe"
               type="text"
               id="name"
               name="name"
               value={formData.name}
               onChange={handleChange}
-              className="mt-1 block w-full bg-transparent border-b border-primary-white focus:border-white focus:outline-none text-xl text-secondary-white my-2"
+              className="mt-1 block w-full bg-transparent border-b border-primary-white focus:outline-none text-xl text-secondary-white my-2 py-2"
               required
+              whileHover={{ scale: 1.05 }}
+              whileFocus={{
+                scale: 1.05,
+                borderColor: "#fff",
+                boxShadow: "0px 4px 10px rgba(255, 255, 255, 0.3)",
+              }}
+              transition={{ duration: 0.3 }}
             />
           </div>
           <div className="mt-8">
             <label
               htmlFor="email"
-              className="block text-2xl font-medium text-primary-white"
+              className="my-4 block text-2xl font-medium text-primary-white"
             >
               Email
             </label>
-            <input
+            <motion.input
+              placeholder="JohnnyDoe@mail.com"
               type="email"
               id="email"
               name="email"
               value={formData.email}
               onChange={handleChange}
-              className="mt-1 block w-full bg-transparent border-b border-primary-white focus:border-white focus:outline-none text-xl text-secondary-white my-2"
+              className="mt-1 block w-full bg-transparent border-b border-primary-white focus:outline-none text-xl text-secondary-white my-4 py-2"
               required
+              whileHover={{ scale: 1.05 }}
+              whileFocus={{
+                scale: 1.05,
+                borderColor: "#fff",
+                boxShadow: "0px 4px 10px rgba(255, 255, 255, 0.3)",
+              }}
+              transition={{ duration: 0.3 }}
             />
           </div>
           <div className="mt-8">
             <label
               htmlFor="phoneNumber"
-              className="block text-2xl font-medium text-primary-white"
+              className="my-4 block text-2xl font-medium text-primary-white"
             >
               Phone Number
             </label>
-            <input
+            <motion.input
+              placeholder="089221412412"
               type="tel"
               id="phoneNumber"
               name="phoneNumber"
               value={formData.phoneNumber}
               onChange={handleChange}
-              className="mt-1 block w-full bg-transparent border-b border-primary-white focus:border-white focus:outline-none text-xl text-secondary-white my-2"
+              className="mt-1 block w-full bg-transparent border-b border-primary-white focus:outline-none text-xl text-secondary-white my-4 py-2"
               required
+              whileHover={{ scale: 1.05 }}
+              whileFocus={{
+                scale: 1.05,
+                borderColor: "#fff",
+                boxShadow: "0px 0px 10px rgba(255, 255, 255, 0.3)",
+              }}
+              transition={{ duration: 0.3 }}
             />
           </div>
           <div className="mt-8">
@@ -101,14 +125,22 @@ const Mailer = () => {
             >
               Message
             </label>
-            <textarea
+            <motion.textarea
+              placeholder="I want to build something"
               id="message"
               name="message"
               value={formData.message}
               onChange={handleChange}
-              className="mt-1 block w-full bg-transparent border-b border-primary-white focus:border-white focus:outline-none text-xl text-secondary-white my-2"
-              rows="4"
+              className="mt-1 block w-full bg-transparent border-b border-primary-white focus:outline-none text-xl text-secondary-white my-2 py-2"
+              rows="2"
               required
+              whileHover={{ scale: 1.05 }}
+              whileFocus={{
+                scale: 1.05,
+                borderColor: "#fff",
+                boxShadow: "0px 4px 10px rgba(255, 255, 255, 0.3)",
+              }}
+              transition={{ duration: 0.3 }}
             />
           </div>
           <motion.button
