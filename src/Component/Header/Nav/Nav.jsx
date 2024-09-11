@@ -5,8 +5,12 @@ import { links, footerLinks } from "./data";
 import { perspective, slideIn, blur } from "./anim";
 import "./nav.css";
 
-export default function Nav() {
+export default function Nav({ onCloseMenu }) {
   const [selectedLink, setSelectedLink] = useState(null);
+
+  const handleLinkClick = () => {
+    onCloseMenu();
+  };
 
   return (
     <div className="nav">
@@ -24,7 +28,7 @@ export default function Nav() {
                 selectedLink !== null && selectedLink !== i ? "open" : "closed"
               }
             >
-              <Link to={href}>
+              <Link to={href} onClick={handleLinkClick}>
                 <motion.div
                   custom={i}
                   variants={perspective}
@@ -43,7 +47,7 @@ export default function Nav() {
         {footerLinks.map((link, i) => {
           const { title, href } = link;
           return (
-            <Link to={href} key={`f_${i}`}>
+            <Link to={href} key={`f_${i}`} onClick={handleLinkClick}>
               <motion.div
                 variants={slideIn}
                 custom={i}
