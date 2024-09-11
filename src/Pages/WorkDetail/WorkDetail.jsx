@@ -63,7 +63,7 @@ const WorkDetail = () => {
                 {category}
               </p>
               <img
-                src={`${BASE_API}${images[0]?.attributes.url}`}
+                src={images[0]?.attributes.url}
                 alt=""
                 className="h-1/ rounded-lg"
               />
