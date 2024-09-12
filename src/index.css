@@ -78,3 +78,7 @@ body {
   z-index: 999;
   pointer-events: none;
 }
+
+.floating_button{
+  z-index: 99999;
+}

@@ -1,8 +1,15 @@
 import { motion } from "framer-motion";
 import "./hero.css";
 import HeroArrow from "../../assets/hero_arrow.svg";
+import { useNavigate } from "react-router-dom";
+
 
 const Hero = () => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/projects`);
+  };
   return (
     <div className="hero__bg" data-scroll-section>
       <div className="flex flex-col justify-center items-center h-screen">
@@ -19,6 +26,7 @@ const Hero = () => {
             whileTap={{ scale: 0.95 }}
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
             className="mt-6 px-8 py-3 bg-primary-white text-primary-orange font-semibold rounded-full hover:bg-opacity-90 transition-colors duration-300"
+            onClick={handleClick}
           >
             Learn More
           </motion.button>

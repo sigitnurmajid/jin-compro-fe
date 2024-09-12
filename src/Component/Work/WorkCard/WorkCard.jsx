@@ -15,7 +15,7 @@ const WorkCard = ({
 }) => {
   const navigate = useNavigate();
   const firstImageUrl = imageUrl?.[0]?.attributes?.url;
-  console.log(firstImageUrl);
+  
 
   const handleClick = () => {
     navigate(`/workdetail`, {

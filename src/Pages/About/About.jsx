@@ -7,7 +7,13 @@ import arrow from "../../assets/arrow_90.svg";
 import Mailer from "../../Component/Mailer/Mailer";
 import Section from "../../Component/Anim/Section";
 import Footer from "../../Component/Footer/Footer";
+import { useNavigate } from "react-router-dom";
 const About = () => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/contact`);
+  };
   useEffect(() => {
     if (window.locomotiveScroll) {
       window.locomotiveScroll.update();
@@ -33,6 +39,7 @@ const About = () => {
                 whileTap={{ scale: 0.95 }}
                 transition={{ type: "spring", stiffness: 400, damping: 17 }}
                 className="mt-6 px-6 py-3 bg-primary-white text-primary-orange font-semibold rounded-full hover:bg-opacity-90 transition-colors duration-300"
+                onClick={handleClick}
               >
                 Let's Talk
               </motion.button>

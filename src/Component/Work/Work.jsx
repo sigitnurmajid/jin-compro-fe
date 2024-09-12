@@ -7,7 +7,7 @@ const Work = (works) => {
   const featuredWorksData = worksData?.filter(
     (work) => work.attributes.Featured === true
   );
-  console.log(worksData);
+  
 
   if (!worksData) {
     console.log("No works data available");

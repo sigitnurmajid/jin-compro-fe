@@ -25,18 +25,19 @@ import Footer from "./Component/Footer/Footer";
 import Hero from "./Component/Hero/Hero";
 import Speciality from "./Component/Speciality/Speciality";
 import Work from "./Component/Work/Work";
+import FloatingButton from "./Component/FloatingButton/FloatingButton";
 
-function ScrollContainer({ children, isLoading }) {
+function ScrollContainer({ children, isLoading, setLocomotiveInstance }) {
   const scrollRef = useRef(null);
   const locomotiveScrollRef = useRef(null);
   const location = useLocation();
 
   useEffect(() => {
-    if (isLoading) return; // Don't initialize scroll if still loading
+    if (isLoading) return;
 
     const initLocomotiveScroll = () => {
       if (locomotiveScrollRef.current) {
-        locomotiveScrollRef.current.destroy(); // Destroy previous instance
+        locomotiveScrollRef.current.destroy();
       }
       locomotiveScrollRef.current = new LocomotiveScroll({
         el: scrollRef.current,
@@ -47,9 +48,11 @@ function ScrollContainer({ children, isLoading }) {
         smartphone: { smooth: true },
         tablet: { smooth: true },
       });
+
+      // Pass the initialized Locomotive instance to parent component
+      setLocomotiveInstance(locomotiveScrollRef.current);
     };
 
-    // Delay initialization to allow the DOM to fully load
     const timer = setTimeout(() => {
       initLocomotiveScroll();
     }, 100);
@@ -57,10 +60,10 @@ function ScrollContainer({ children, isLoading }) {
     return () => {
       clearTimeout(timer);
       if (locomotiveScrollRef.current) {
-        locomotiveScrollRef.current.destroy(); // Cleanup
+        locomotiveScrollRef.current.destroy();
       }
     };
-  }, [location.pathname, isLoading]);
+  }, [location.pathname, isLoading, setLocomotiveInstance]);
 
   // Update Locomotive Scroll on window resize and content changes
   useEffect(() => {
@@ -78,7 +81,6 @@ function ScrollContainer({ children, isLoading }) {
       }
     };
 
-    // Set up a ResizeObserver to watch for changes in the container's size
     const resizeObserver = new ResizeObserver(() => {
       if (scrollRef.current) {
         const height = scrollRef.current.clientHeight;
@@ -92,8 +94,6 @@ function ScrollContainer({ children, isLoading }) {
     }
 
     window.addEventListener("resize", handleResize);
-
-    // Update scroll when children change
     updateScroll();
 
     return () => {
@@ -116,11 +116,13 @@ function ScrollContainer({ children, isLoading }) {
   );
 }
 
+
 function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [services, setServices] = useState([]);
   const [categories, setCategories] = useState([]);
   const [works, setWorks] = useState([]);
+  const [locomotiveInstance, setLocomotiveInstance] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -162,9 +164,13 @@ function App() {
         {isLoading ? <Preloader /> : null}
       </AnimatePresence>
       <Header isLoading={isLoading} />
+      {!isLoading && <FloatingButton locomotiveInstance={locomotiveInstance} />}
       <AnimatePresence mode="wait">
         {!isLoading && (
-          <ScrollContainer isLoading={isLoading}>
+          <ScrollContainer
+            isLoading={isLoading}
+            setLocomotiveInstance={setLocomotiveInstance}
+          >
             <Routes>
               <Route path="/" element={<MainContent />} />
               <Route
@@ -198,5 +204,6 @@ function App() {
     </Router>
   );
 }
+
 
 export default App;
