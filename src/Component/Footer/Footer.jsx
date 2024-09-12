@@ -39,7 +39,7 @@ const Footer = () => {
         <div className="flex flex-col gap3 ">
           <p className="text-lg text-primary-white">ready to collaborate?</p>
           <motion.div
-            className="text-8xl font-bold tracking-tighter cursor-pointer"
+            className="text-8xl font-bold tracking-tighter cursor-pointer w-fit"
             onClick={handleEmailClick}
             onHoverStart={handleHoverStart}
             onHoverEnd={handleHoverEnd}
@@ -51,6 +51,7 @@ const Footer = () => {
                 animate={controls}
                 initial={{ color: "rgb(255, 255, 255)", scale: 1 }}
                 style={{ display: "inline-block" }}
+                className="w-fit"
               >
                 {char}
               </motion.span>
