@@ -33,7 +33,7 @@ const FloatingButton = ({ locomotiveInstance }) => {
   return (
     <motion.button
       ref={buttonRef}
-      className="floating_button fixed bottom-4 right-14 bg-primary-orange text-white px-4 py-2 rounded-full shadow-lg z-[1000] cursor-pointer flex flex-row justify-center items-center gap-2" 
+      className="floating_button fixed bottom-4 right-14 bg-gradient-to-r from-primary-orange to-orange-600 text-white px-4 py-2 rounded-full shadow-lg z-[1000] cursor-pointer flex flex-row justify-center items-center gap-2 font-medium shadow-lg hover:shadow-xl" 
       style={{
         opacity,
         scale,
